@@ -25,8 +25,7 @@ console.log('Current environment:', {
 // Validate required environment variables
 const requiredEnvs = [
   'NEXT_PUBLIC_SANITY_PROJECT_ID',
-  'NEXT_PUBLIC_SANITY_DATASET',
-  'SANITY_API_TOKEN'
+  'NEXT_PUBLIC_SANITY_DATASET' 
 ]
 
 requiredEnvs.forEach(env => {
