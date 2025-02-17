@@ -117,5 +117,85 @@ export const seedData = {
     _type: 'settings',
     title: 'My Next.js Blog',
     description: 'A modern blog built with Next.js and Sanity',
+    cta: {
+      text: 'Sign up',
+      href: '/signup',
+      isExternal: false
+    }
+  },
+
+  navigation: [
+    {
+      _id: uuid(),
+      _type: 'navigation',
+      name: 'Product',
+      href: '/product',
+      order: 1,
+      isExternal: false
+    },
+    {
+      _id: uuid(),
+      _type: 'navigation',
+      name: 'Features',
+      href: '/features',
+      order: 2,
+      isExternal: false
+    },
+    {
+      _id: uuid(),
+      _type: 'navigation',
+      name: 'Marketplace',
+      href: '/marketplace',
+      order: 3,
+      isExternal: false
+    },
+    {
+      _id: uuid(),
+      _type: 'navigation',
+      name: 'Company',
+      href: '/company',
+      order: 4,
+      isExternal: false
+    }
+  ],
+
+  images: {
+    hero: {
+      _id: uuid(),
+      _type: 'sanity.imageAsset',
+      url: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1920&h=1080',
+      metadata: {
+        dimensions: {
+          aspectRatio: 1.777777778,
+          height: 1080,
+          width: 1920
+        }
+      }
+    }
+  },
+
+  hero: {
+    _id: 'hero',
+    _type: 'hero',
+    title: 'Welcome to Our Blog',
+    subtitle: 'Discover stories, technical articles, and insights from our team.',
+    backgroundImage: {
+      _type: 'image',
+      asset: {
+        _type: 'reference',
+        _ref: '{{images.hero._id}}'  // Will be replaced during seeding
+      },
+      hotspot: {
+        x: 0.5,
+        y: 0.5,
+        height: 1,
+        width: 1
+      }
+    },
+    cta: {
+      text: 'Start Reading',
+      href: '/posts',
+      isExternal: false
+    }
   }
 } 

@@ -4,7 +4,7 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { NextStudio } from "next-sanity/studio";
-import { schemaTypes } from "../../../sanity/schemas";
+import { schemaTypes } from "../../../../sanity/schemas";
 
 
 const sanityConfig = defineConfig({
