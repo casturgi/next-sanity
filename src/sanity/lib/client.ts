@@ -1,6 +1,6 @@
 import '../../lib/env'
 import { createClient } from '@sanity/client'
-import { Post, postsQuery } from './queries'
+import { Post, postsQuery, Navigation, navigationQuery, Settings, settingsQuery, Hero, heroQuery } from './queries'
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -12,4 +12,16 @@ export const client = createClient({
 
 export async function getPosts(): Promise<Post[]> {
   return client.fetch(postsQuery)
+}
+
+export async function getNavigation(): Promise<Navigation[]> {
+  return client.fetch(navigationQuery)
+}
+
+export async function getSettings(): Promise<Settings> {
+  return client.fetch(settingsQuery)
+} 
+
+export async function getHero(): Promise<Hero> {
+  return client.fetch(heroQuery)
 } 

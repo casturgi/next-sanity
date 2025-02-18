@@ -38,6 +38,37 @@ export const postQuery = groq`
   }
 `
 
+export const navigationQuery = groq`
+  *[_type == "navigation"] | order(order asc) {
+    _id,
+    name,
+    href,
+    isExternal,
+    order
+  }
+`
+
+export const settingsQuery = groq`
+  *[_type == "settings"][0] {
+    title,
+    description,
+    logo,
+    ogImage,
+    cta
+  }
+`
+
+export const heroQuery = groq`
+  *[_type == "hero"][0] {
+    title,
+    subtitle,
+    backgroundImage {
+      asset->
+    },
+    cta
+  }
+`
+
 export type Post = {
   _id: string
   title: string
@@ -60,4 +91,47 @@ export type Post = {
   categories?: Array<{
     title: string
   }>
+}
+
+export type Navigation = {
+  _id: string
+  name: string
+  href: string
+  isExternal: boolean
+  order: number
+}
+
+export type Settings = {
+  title: string
+  description?: string
+  logo?: {
+    asset: {
+      url: string
+    }
+  }
+  ogImage?: {
+    asset: {
+      url: string
+    }
+  }
+  cta?: {
+    text: string
+    href: string
+    isExternal: boolean
+  }
+}
+
+export type Hero = {
+  title: string
+  subtitle?: string
+  backgroundImage: {
+    asset: {
+      url: string
+    }
+  }
+  cta?: {
+    text: string
+    href: string
+    isExternal: boolean
+  }
 } 
