@@ -110,6 +110,8 @@ feat(auth): add user authentication
 yarn dev                  # Start development server
 yarn build               # Build for production
 yarn start               # Start production server
+yarn storybook          # Start Storybook development server
+yarn build-storybook    # Build Storybook for production
 
 # Code Quality
 yarn format             # Format code with Prettier
@@ -129,6 +131,7 @@ yarn seed:sanity       # Seed Sanity content
 
 - Main site: [http://localhost:3000](http://localhost:3000)
 - Sanity Studio: [http://localhost:3000/admin](http://localhost:3000/admin)
+- Storybook: [http://localhost:6006](http://localhost:6006)
 
 ## Deployment
 
