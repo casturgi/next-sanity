@@ -32,7 +32,8 @@
     "next-sanity": "^9.8.57",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sanity": "^3.75.0"
+    "sanity": "^3.75.0",
+    "@prisma/client": "^5.10.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3",
@@ -64,7 +65,14 @@
     "storybook": "^8.5.8",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "prisma": "^5.10.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
