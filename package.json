@@ -14,7 +14,8 @@
     "prisma:seed": "ts-node --project tsconfig.json prisma/seed.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Sanity + Prisma Project
+
+## Prerequisites
+
+- Node.js 20.x
+- Yarn (npm and other package managers are not supported)
+- PostgreSQL
+- Git
 
 ## Getting Started
 
-First, run the development server:
+### 1. Installation
 
 ```bash
-npm run dev
-# or
+# Clone the repository
+git clone <repository-url>
+cd <project-directory>
+
+# Install dependencies (must use yarn)
+yarn install
+```
+
+### 2. Environment Setup
+
+```bash
+# Copy the example env file
+cp .env.example .env.local
+
+# Update .env.local with your values:
+# - DATABASE_URL
+# - NEXT_PUBLIC_SANITY_PROJECT_ID
+# - NEXT_PUBLIC_SANITY_DATASET
+# - SANITY_API_TOKEN
+```
+
+### 3. Database Setup
+
+```bash
+# Create the database
+createdb next_sanity_dev
+
+# Generate Prisma client
+yarn prisma:generate
+
+# Run migrations
+yarn prisma:migrate
+
+# Seed the database
+yarn prisma:seed
+```
+
+### 4. Development Server
+
+```bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development Workflow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Git Hooks and Code Quality
 
-## Learn More
+This project uses pre-commit hooks to ensure code quality. They are automatically installed when running `yarn install`.
 
-To learn more about Next.js, take a look at the following resources:
+The pre-commit hooks will:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Format your code with Prettier
+- Run ESLint fixes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If hooks aren't running:
 
-## Deploy on Vercel
+```bash
+# Make hooks executable
+chmod ug+x .husky/*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Manually run format and lint
+yarn format
+yarn lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Commit Messages
+
+We use conventional commits. Your commit message should follow this format:
+
+```
+<type>(<scope>): <description>
+```
+
+Types:
+
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation
+- `style`: Formatting
+- `refactor`: Code restructuring
+- `test`: Tests
+- `chore`: Maintenance
+
+Example:
+
+```
+feat(auth): add user authentication
+```
+
+### Available Scripts
+
+```bash
+# Development
+yarn dev                  # Start development server
+yarn build               # Build for production
+yarn start               # Start production server
+
+# Code Quality
+yarn format             # Format code with Prettier
+yarn lint               # Run ESLint
+yarn typecheck         # Run TypeScript checks
+
+# Database
+yarn prisma:generate    # Generate Prisma client
+yarn prisma:migrate    # Run database migrations
+yarn prisma:seed       # Seed the database
+
+# Sanity CMS
+yarn seed:sanity       # Seed Sanity content
+```
+
+### Important URLs
+
+- Main site: [http://localhost:3000](http://localhost:3000)
+- Sanity Studio: [http://localhost:3000/admin](http://localhost:3000/admin)
+
+## Deployment
+
+The project is set up to deploy on Vercel. Required environment variables:
+
+```bash
+# Database
+DATABASE_URL=
+
+# Sanity
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+SANITY_API_TOKEN=
+```
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Sanity](https://www.sanity.io/) - Headless CMS
+- [Prisma](https://www.prisma.io/) - Database ORM
+- [TailwindCSS](https://tailwindcss.com/) - CSS framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
+- [Husky](https://typicode.github.io/husky/) - Git hooks
+
+## Notes
+
+- Use `yarn` for all package management commands
+- Do not use `npm` or `pnpm` as it will break the lock file
+- Always run `yarn typecheck` before committing to ensure type safety
